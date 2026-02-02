@@ -1,0 +1,137 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+
+interface MobileMenuProps {
+  logoUrl?: string;
+}
+
+export default function MobileMenu({ logoUrl }: MobileMenuProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const fallbackLogo = "/images/Icon/logo_dark_logo-dark_1769083126 (2).svg";
+  const displayLogoUrl = logoUrl || fallbackLogo;
+
+  const links = [
+    { href: "/", label: "HOME" },
+    { href: "/about-us", label: "ABOUT US" },
+    { href: "/services", label: "SERVICES" },
+    { href: "/sectors", label: "SECTORS" },
+    { href: "/contact-us", label: "CONTACT US" },
+  ];
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  return (
+    <div className="lg:hidden">
+      {/* Hamburger Button */}
+      <button
+        onClick={toggleMenu}
+        className="flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 relative"
+        aria-label="Toggle menu"
+      >
+        <span
+          className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+            isOpen ? "rotate-45 translate-y-2" : ""
+          }`}
+        />
+        <span
+          className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+            isOpen ? "opacity-0" : ""
+          }`}
+        />
+        <span
+          className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${
+            isOpen ? "-rotate-45 -translate-y-2" : ""
+          }`}
+        />
+      </button>
+
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={closeMenu}
+      />
+
+      {/* Sidebar Menu - Slides from right */}
+      <div
+        className={`fixed top-0 right-0 h-full w-100 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out rounded-tl-2xl rounded-bl-2xl flex flex-col ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Header with Logo and Close Button */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
+          <div className="flex items-center gap-3">
+            <Image
+              src={displayLogoUrl}
+              alt="ADNH Catering"
+              width={160}
+              height={80}
+              className="h-20 w-auto"
+              unoptimized
+            />
+          </div>
+          <button
+            onClick={closeMenu}
+            className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center transition"
+            aria-label="Close menu"
+          >
+              <span className="text-3xl text-gray-600 font-medium">×</span>
+          </button>
+        </div>
+
+        {/* Navigation Links - Scrollable */}
+        <nav className="flex flex-col py-4 flex-1 overflow-y-auto">
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className={`px-6 py-2 mx-7 my-2 text-lg uppercase transition-all duration-200 rounded ${
+                  isActive
+                    ? "text-gray-800 font-medium bg-gray-200"
+                    : "text-gray-800 bg-gray-100 hover:bg-gray-150"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Investor Relations Button - Fixed at bottom */}
+        <div className="p-6 border-t border-gray-200 flex-shrink-0">
+          <button className="btn-primary text-white w-full px-3 py-2 rounded-2xl text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:scale-95">
+            Investor Relations
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+

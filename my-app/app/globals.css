@@ -4,3 +4,38 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Override Tailwind's default container max-width */
+@media (min-width: 96rem) {
+  .container {
+    max-width: 1728px !important;
+  }
+}
+
+.text-primary {
+  color: #09446c;
+}
+
+.text-secondary {
+  color: #b49b57;
+}
+
+.text-tertiary {
+  color: #f8f9fa;
+}
+.nav-link:hover {
+  border-color: #e5e7eb;
+}
+.nav-link-hover:hover {
+  color: #b49b57 !important;
+}
+/* Active navigation link */
+.nav-link.text-primary {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe;
+}
+
+.btn-primary {
+  background-color: #09446c;
+  
+}
