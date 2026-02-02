@@ -15,7 +15,7 @@ export default function NavLinks() {
   ];
 
   return (
-    <nav className="flex items-center gap-15 sm:hidden lg:flex">
+    <nav className="hidden lg:flex items-center gap-5 xl:gap-15">
       {links.map((link) => {
         const isActive = pathname === link.href;
         return (

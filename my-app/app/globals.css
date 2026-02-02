@@ -37,5 +37,8 @@ body {
 
 .btn-primary {
   background-color: #09446c;
-  
+}
+
+.container-padding {
+  padding: 0 20px !important;
 }

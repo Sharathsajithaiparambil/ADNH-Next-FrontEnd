@@ -23,7 +23,7 @@ export default async function Header() {
     <header className="bg-slate-100 py-4">
       <div className="h-full mx-auto flex items-center justify-between container container-padding">
         {/* Logo Section */}
-        <div className="flex items-center">
+        <div className="flex items-center flex-shrink-0">
           <Image
             src={displayLogoUrl}
             alt="ADNH Catering"
@@ -35,7 +35,7 @@ export default async function Header() {
         </div>
 
         <NavLinks />
-        <button className="hidden lg:block btn-primary text-white px-4 py-2 rounded-lg text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:scale-95">
+        <button className="hidden lg:block btn-primary text-white px-4 py-2 rounded-lg text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:scale-95 flex-shrink-0 whitespace-nowrap">
           Investor Relations
         </button>
         <MobileMenu logoUrl={displayLogoUrl} />
