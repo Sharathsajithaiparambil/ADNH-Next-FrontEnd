@@ -26,7 +26,7 @@ export default async function WelcomeSection({ slug }: HeroSectionProps) {
   const { title, description, items } = sliderData;
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-slate-100">
       <div className="container mx-auto px-4 container-padding">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           <div className="space-y-6 lg:col-span-2 lg:pr-20 lg:pt-20">

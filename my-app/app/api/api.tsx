@@ -7,3 +7,7 @@ export default async function getHeaderImage() {
 export async function getSliderData(slug: string) {
     return get(`/api/public/sliders/${slug}`);
 }
+
+export async function getOurBrands() {
+    return get('/api/public/our-brands');
+}
