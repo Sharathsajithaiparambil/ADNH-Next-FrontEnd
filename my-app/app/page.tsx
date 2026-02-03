@@ -1,5 +1,5 @@
-import WelcomeSection from "@/components/WelcomeSection";
-import WhoWeAreSection from "@/components/WhoWeAreSection";
+import WelcomeSection from "@/components/home/WelcomeSection";
+import WhoWeAreSection from "@/components/about-us/WhoWeAreSection";
 
 export default function Home() {
   return (

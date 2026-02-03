@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { HiMenu } from "react-icons/hi";
+import { useLenis } from "../providers/LenisContext";
 
 interface MobileMenuProps {
   logoUrl?: string;
@@ -13,6 +14,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ logoUrl }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { lenis } = useLenis();
   const fallbackLogo = "/images/Icon/logo_dark_logo-dark_1769083126 (2).svg";
   const displayLogoUrl = logoUrl || fallbackLogo;
 
@@ -39,8 +41,11 @@ export default function MobileMenu({ logoUrl }: MobileMenuProps) {
       // Small delay to allow menu to close before scrolling
       setTimeout(() => {
         const aboutUsSection = document.getElementById("about-us");
-        if (aboutUsSection) {
-          aboutUsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (aboutUsSection && lenis) {
+          lenis.scrollTo(aboutUsSection, {
+            offset: 0,
+            duration: 1.2,
+          });
         }
       }, 100);
     }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/navbar/Header";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "ADNH Catering",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        <SmoothScroll>
+          <Header />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

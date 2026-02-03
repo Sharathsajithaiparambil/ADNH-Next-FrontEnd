@@ -2,16 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLenis } from "../providers/LenisContext";
 
 export default function NavLinks() {
   const pathname = usePathname();
+  const { lenis } = useLenis();
 
   const handleAboutUsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       e.preventDefault();
       const aboutUsSection = document.getElementById("about-us");
-      if (aboutUsSection) {
-        aboutUsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (aboutUsSection && lenis) {
+        lenis.scrollTo(aboutUsSection, {
+          offset: 0,
+          duration: 1.2,
+        });
       }
     }
   };
