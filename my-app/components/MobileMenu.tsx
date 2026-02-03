@@ -32,6 +32,19 @@ export default function MobileMenu({ logoUrl }: MobileMenuProps) {
     setIsOpen(false);
   };
 
+  const handleAboutUsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      closeMenu();
+      // Small delay to allow menu to close before scrolling
+      setTimeout(() => {
+        const aboutUsSection = document.getElementById("about-us");
+        if (aboutUsSection) {
+          aboutUsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  };
 
   return (
     <div className="lg:hidden">
@@ -80,11 +93,12 @@ export default function MobileMenu({ logoUrl }: MobileMenuProps) {
         <nav className="flex flex-col py-4 flex-1 overflow-y-auto">
           {links.map((link) => {
             const isActive = pathname === link.href;
+            const isAboutUs = link.href === "/about-us";
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={closeMenu}
+                onClick={isAboutUs ? handleAboutUsClick : closeMenu}
                 className={`px-6 py-2 mx-7 my-2 text-lg uppercase transition-all duration-200 rounded ${
                   isActive
                     ? "text-gray-800 font-medium bg-gray-200"
