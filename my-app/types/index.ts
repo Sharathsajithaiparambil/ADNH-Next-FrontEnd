@@ -82,3 +82,25 @@ export interface HeaderContentProps {
 export interface LenisContextType {
   lenis: Lenis | null;
 }
+
+// Service Types
+export interface Service {
+  id: number;
+  title: string;
+  image: string;
+  mobile_image: string | null;
+  description: string;
+}
+
+export interface ServicesSectionProps {
+  slug: string;
+}
+
+export interface ServicesClientProps {
+  header: {
+    tag: string;
+    title: string;
+    description: string;
+  };
+  services: Service[];
+}

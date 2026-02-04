@@ -1,4 +1,4 @@
-import { getSliderData } from "@/app/api/api";
+import { getBannerData } from "@/app/api/api";
 import ScrollAnimatedImages from "./ScrollAnimatedImages";
 import { WhoWeAreSectionProps } from "@/types";
 
@@ -6,7 +6,7 @@ export default async function WhoWeAreSection({ slug }: WhoWeAreSectionProps) {
   let sliderData = null;
 
   try {
-    const response = await getSliderData(slug);
+    const response = await getBannerData(slug);
     if (response?.success) {
       sliderData = response.data;
     }

@@ -20,7 +20,14 @@ export default async function WelcomeSection({ slug }: HeroSectionProps) {
     return null;
   }
 
-  const { title, description, items } = sliderData;
+  const header = sliderData.header;
+  const title = header?.title || sliderData.title;
+  const description = header?.description || sliderData.description;
+  const items = sliderData.services || sliderData.items;
+
+  if (!title || !description) {
+    return null;
+  }
 
   return (
     <section id="home" className="py-12 bg-slate-100">

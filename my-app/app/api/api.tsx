@@ -5,6 +5,10 @@ export default async function getHeaderImage() {
 }
 
 export async function getSliderData(slug: string) {
+    return get(`/api/public/banners/${slug}`);
+}
+
+export async function getBannerData(slug: string) {
     return get(`/api/public/sliders/${slug}`);
 }
 
