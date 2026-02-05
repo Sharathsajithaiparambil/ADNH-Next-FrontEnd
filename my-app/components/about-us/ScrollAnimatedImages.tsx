@@ -14,7 +14,7 @@ function AnimatedImageItem({ item, index }: AnimatedImageItemProps) {
 
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const y = useTransform(scrollYProgress, [0, 0.3], [100, 0]);
-  const rotateX = useTransform(scrollYProgress, [0, 0.5], [80, 0]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
 
   return (
     <motion.div

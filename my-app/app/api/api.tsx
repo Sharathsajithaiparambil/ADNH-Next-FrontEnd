@@ -4,11 +4,11 @@ export default async function getHeaderImage() {
     return get('/api/public/settings');
 }
 
-export async function getSliderData(slug: string) {
+export async function getBannerData(slug: string) {
     return get(`/api/public/banners/${slug}`);
 }
 
-export async function getBannerData(slug: string) {
+export async function getSliderData(slug: string) {
     return get(`/api/public/sliders/${slug}`);
 }
 

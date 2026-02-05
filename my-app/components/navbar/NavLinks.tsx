@@ -17,6 +17,7 @@ export default function NavLinks() {
       const scrollY = e.scroll || window.scrollY;
       const sections = [
         { id: "home", offset: 0 },
+        { id: "services", offset: 150 },
         { id: "about-us", offset: 150 },
       ];
 
@@ -77,10 +78,23 @@ export default function NavLinks() {
     }
   };
 
+  const handleServicesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const servicesSection = document.getElementById("services");
+      if (servicesSection && lenis) {
+        lenis.scrollTo(servicesSection, {
+          offset: 0,
+          duration: 1.2,
+        });
+      }
+    }
+  };
+
   const links = [
     { href: "/", label: "HOME", sectionId: "home", onClick: handleHomeClick },
     { href: "/about-us", label: "ABOUT US", sectionId: "about-us", onClick: handleAboutUsClick },
-    { href: "/services", label: "SERVICES", sectionId: "services", onClick: undefined },
+    { href: "/services", label: "SERVICES", sectionId: "services", onClick: handleServicesClick },
     { href: "/sectors", label: "SECTORS", sectionId: "sectors", onClick: undefined },
     { href: "/contact-us", label: "CONTACT US", sectionId: "contact-us", onClick: undefined },
   ];

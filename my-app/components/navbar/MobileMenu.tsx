@@ -68,6 +68,24 @@ export default function MobileMenu({ logoUrl }: MobileMenuProps) {
     }
   };
 
+  const handleServicesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      closeMenu();
+      setTimeout(() => {
+        const servicesSection = document.getElementById("services");
+        if (servicesSection && lenis) {
+          lenis.scrollTo(servicesSection, {
+            offset: 0,
+            duration: 1.2,
+          });
+        }
+      }, 100);
+    } else {
+      closeMenu();
+    }
+  };
+
   return (
     <div className="lg:hidden">
       {!isOpen && (
@@ -117,11 +135,14 @@ export default function MobileMenu({ logoUrl }: MobileMenuProps) {
             const isActive = pathname === link.href;
             const isHome = link.href === "/";
             const isAboutUs = link.href === "/about-us";
+            const isServices = link.href === "/services";
             
             const handleClick = isHome 
               ? handleHomeClick 
               : isAboutUs 
               ? handleAboutUsClick 
+              : isServices
+              ? handleServicesClick
               : closeMenu;
             
             return (

@@ -1,4 +1,4 @@
-import { getSliderData } from "@/app/api/api";
+import { getBannerData } from "@/app/api/api";
 import DesktopImageRow from "./DesktopImageRow";
 import MobileImageCarousel from "./MobileImageCarousel";
 import { HiArrowRight } from "react-icons/hi";
@@ -8,7 +8,7 @@ export default async function WelcomeSection({ slug }: HeroSectionProps) {
   let sliderData = null;
 
   try {
-    const response = await getSliderData(slug);
+    const response = await getBannerData(slug);
     if (response?.success) {
       sliderData = response.data;
     }
