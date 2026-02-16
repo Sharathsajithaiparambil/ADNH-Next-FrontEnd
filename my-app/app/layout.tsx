@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/navbar/Header";
+import Footer from "@/components/footer/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import getHeaderImage from "@/app/api/api";
 
@@ -41,6 +42,7 @@ export default function RootLayout({
           <div className="pt-[88px]">
             {children}
           </div>
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

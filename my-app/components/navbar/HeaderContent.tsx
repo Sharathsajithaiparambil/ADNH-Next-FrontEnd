@@ -17,7 +17,6 @@ export default function HeaderContent({ logoUrl, isScrolled = false }: HeaderCon
             width={200}
             height={100}
             className="h-20 w-auto"
-            unoptimized
           />
         </div>
 

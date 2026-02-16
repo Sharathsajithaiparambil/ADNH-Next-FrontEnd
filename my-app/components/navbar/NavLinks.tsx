@@ -20,6 +20,7 @@ export default function NavLinks() {
         { id: "about-us", offset: 150 },
         { id: "services", offset: 150 },
         { id: "sectors", offset: 150 },
+        { id: "contact-us", offset: 150 },
       ];
 
       let currentSection = "home";
@@ -28,7 +29,7 @@ export default function NavLinks() {
         if (section) {
           const rect = section.getBoundingClientRect();
           const sectionTop = rect.top + scrollY - sections[i].offset;
-          
+
           if (scrollY >= sectionTop - 300) {
             currentSection = sections[i].id;
             break;
@@ -105,12 +106,25 @@ export default function NavLinks() {
     }
   };
 
+  const handleContactUsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const contactUsSection = document.getElementById("contact-us");
+      if (contactUsSection && lenis) {
+        lenis.scrollTo(contactUsSection, {
+          offset: 0,
+          duration: 1.2,
+        });
+      }
+    }
+  };
+
   const links = [
     { href: "/", label: "HOME", sectionId: "home", onClick: handleHomeClick },
     { href: "/about-us", label: "ABOUT US", sectionId: "about-us", onClick: handleAboutUsClick },
     { href: "/services", label: "SERVICES", sectionId: "services", onClick: handleServicesClick },
     { href: "/sectors", label: "SECTORS", sectionId: "sectors", onClick: handleSectorsClick },
-    { href: "/contact-us", label: "CONTACT US", sectionId: "contact-us", onClick: undefined },
+    { href: "/contact-us", label: "CONTACT US", sectionId: "contact-us", onClick: handleContactUsClick },
   ];
 
   return (
@@ -120,7 +134,7 @@ export default function NavLinks() {
         const isActive = pathname === "/"
           ? activeSection === link.sectionId
           : pathname === link.href;
-        
+
         return (
           <Link
             key={link.href}
