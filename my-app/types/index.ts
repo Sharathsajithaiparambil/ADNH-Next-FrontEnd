@@ -134,3 +134,27 @@ export interface SectorsClientProps {
   short_description?: string;
   sectors: Sector[];
 }
+
+export interface BannerHeader {
+    tag: string;
+    title: string;
+    description: string;
+}
+
+export interface BannerService {
+    id: number;
+    title: string;
+    image: string;
+    mobile_image: string;
+    description: string;
+}
+
+export interface SlidingBannerData {
+    header: BannerHeader;
+    services: BannerService[];
+}
+
+export interface SlidingBannerResponse {
+    success: boolean;
+    data: SlidingBannerData;
+}

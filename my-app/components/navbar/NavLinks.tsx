@@ -17,8 +17,9 @@ export default function NavLinks() {
       const scrollY = e.scroll || window.scrollY;
       const sections = [
         { id: "home", offset: 0 },
-        { id: "services", offset: 150 },
         { id: "about-us", offset: 150 },
+        { id: "services", offset: 150 },
+        { id: "sectors", offset: 150 },
       ];
 
       let currentSection = "home";
@@ -91,11 +92,24 @@ export default function NavLinks() {
     }
   };
 
+  const handleSectorsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const sectorsSection = document.getElementById("sectors");
+      if (sectorsSection && lenis) {
+        lenis.scrollTo(sectorsSection, {
+          offset: 0,
+          duration: 1.2,
+        });
+      }
+    }
+  };
+
   const links = [
     { href: "/", label: "HOME", sectionId: "home", onClick: handleHomeClick },
     { href: "/about-us", label: "ABOUT US", sectionId: "about-us", onClick: handleAboutUsClick },
     { href: "/services", label: "SERVICES", sectionId: "services", onClick: handleServicesClick },
-    { href: "/sectors", label: "SECTORS", sectionId: "sectors", onClick: undefined },
+    { href: "/sectors", label: "SECTORS", sectionId: "sectors", onClick: handleSectorsClick },
     { href: "/contact-us", label: "CONTACT US", sectionId: "contact-us", onClick: undefined },
   ];
 
@@ -103,8 +117,8 @@ export default function NavLinks() {
     <nav className="hidden lg:flex items-center gap-5 xl:gap-15">
       {links.map((link) => {
         // Use scroll-based active state on home page, pathname-based on other pages
-        const isActive = pathname === "/" 
-          ? activeSection === link.sectionId 
+        const isActive = pathname === "/"
+          ? activeSection === link.sectionId
           : pathname === link.href;
         
         return (
@@ -112,9 +126,8 @@ export default function NavLinks() {
             key={link.href}
             href={link.href}
             onClick={link.onClick}
-            className={`nav-link text-lg uppercase transition-colors ${
-              isActive ? "text-primary font-medium" : "text-gray-800 nav-link-hover"
-            }`}
+            className={`nav-link text-lg uppercase transition-colors ${isActive ? "text-primary font-medium" : "text-gray-800 nav-link-hover"
+              }`}
           >
             {link.label}
           </Link>

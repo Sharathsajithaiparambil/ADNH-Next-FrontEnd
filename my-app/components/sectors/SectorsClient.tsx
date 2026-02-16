@@ -26,7 +26,7 @@ export default function SectorsClient({ title, description, short_description, s
   };
 
   return (
-    <section className="py-16 bg-[#fcfaf7] relative overflow-hidden">
+    <section id="sectors" className="py-16 bg-[#fcfaf7] relative overflow-hidden">
       <div className="relative z-10">
         <div className="w-full mx-auto">
           {short_description && (
