@@ -41,7 +41,7 @@ export default function SlidingBannerClient({ data }: SlidingBannerClientProps) 
     // Image Zoom Logic (General for the first image)
     // Scale and dimension transforms to animate from a "card" to "full screen"
     const globalScale = useTransform(smoothProgress, [zoomStart, zoomEnd], [0.85, 1]);
-    const globalBorderRadius = useTransform(smoothProgress, [zoomStart, zoomEnd], ["1.5rem", "0rem"]);
+    const globalBorderRadius = useTransform(smoothProgress, [zoomStart, zoomEnd], ["0.5rem", "0rem"]);
     const globalWidth = useTransform(smoothProgress, [zoomStart, zoomEnd], ["85%", "100%"]);
     const globalHeight = useTransform(smoothProgress, [zoomStart, zoomEnd], ["80vh", "100vh"]);
 
