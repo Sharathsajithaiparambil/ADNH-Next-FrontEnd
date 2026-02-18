@@ -40,9 +40,9 @@ const Footer = () => {
             <div className="footer-bg-pattern"></div>
             <div className="footer-container">
                 <div className="footer-left">
-                    <h2 className="footer-title">
-                        <span>Want to</span>
-                        <span className="accent">reach out?</span>
+                    <h2 className="footer-title font-medium font-playfair">
+                        <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium font-playfair text-secondary">Want to</span>
+                        <span className="font-semibold font-playfair italic text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">reach out?</span>
                     </h2>
 
                     <div className="locations-grid">

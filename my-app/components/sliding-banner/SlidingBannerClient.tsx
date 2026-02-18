@@ -65,7 +65,6 @@ export default function SlidingBannerClient({ data }: SlidingBannerClientProps) 
                 {/* 2. Background Images (Transitions between services) */}
                 <div className="absolute inset-0 z-10 flex items-center justify-center">
                     {services.map((service, index) => (
-                        console.log(service),
                         <BackgroundLayer
                             key={service.id}
                             image={service.image}

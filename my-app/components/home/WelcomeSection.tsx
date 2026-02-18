@@ -34,10 +34,10 @@ export default async function WelcomeSection({ slug }: HeroSectionProps) {
       <div className="container mx-auto px-4 container-padding">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           <div className="space-y-6 lg:col-span-2 lg:pr-20 lg:pt-20">
-            <h1 className="text-4xl lg:text-5xl font-serif text-secondary font-normal">
+            <h1 className="text-4xl lg:text-5xl font-garamound text-secondary font-semibold">
               Welcome to
             </h1>
-            <h2 className="text-5xl lg:text-6xl font-serif font-bold text-primary">
+            <h2 className="text-5xl lg:text-6xl font-extrabold text-primary font-playfair">
               {title.replace("Welcome to ", "")}
             </h2>
             <div

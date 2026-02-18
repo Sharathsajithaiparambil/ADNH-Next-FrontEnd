@@ -8,6 +8,40 @@ body {
   padding: 0;
 }
 
+@theme {
+  --container-padding: 1rem;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent: var(--accent);
+  --color-paragraph: var(--paragraph);
+  --font-sans: var(--font-gotham);
+  --font-mono: var(--font-geist-mono);
+  --font-gotham: var(--font-gotham);
+  --font-playfair: 'Playfair Display', serif;
+  --font-garamound: 'EB Garamond', serif;
+}
+
+@utility container-padding {
+  padding-inline: var(--container-padding);
+}
+
+@utility font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+@utility font-garamound {
+  font-family: var(--font-garamound), serif;
+}
+
+@utility font-gotham {
+  font-family: var(--font-gotham), sans-serif;
+}
+
 /* Override Tailwind's default container max-width */
 @media (min-width: 96rem) {
   .container {

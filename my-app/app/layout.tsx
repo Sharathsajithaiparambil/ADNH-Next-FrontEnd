@@ -4,6 +4,7 @@ import Header from "@/components/navbar/Header";
 import Footer from "@/components/footer/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import getHeaderImage from "@/app/api/api";
+import { gotham } from "./fonts";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -36,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={gotham.className} suppressHydrationWarning>
         <SmoothScroll>
           <Header />
           <div className="pt-[88px]">
